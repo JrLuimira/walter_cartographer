@@ -24,8 +24,8 @@ def generate_launch_description():
     )
     configuration_basename = LaunchConfiguration(
         "configuration_basename",
-        # ! default='walter_lds_2d.lua'
-        default="mappers_params_online_async.yaml",
+        default="walter_lds_2d.lua",
+        # default="mappers_params_online_async.yaml",
     )
 
     resolution = LaunchConfiguration("resolution", default="0.05")
@@ -57,22 +57,23 @@ def generate_launch_description():
             ),
             DeclareLaunchArgument(
                 "use_sim_time",
-                default_value="false",
+                default_value="true",
                 description="Use simulation (Gazebo) clock if true",
             ),
             # Include the robot description from walter_description
-            description_launch,
+            # description_launch,
             # Cartographer Node
             Node(
                 package="cartographer_ros",
                 executable="cartographer_node",
                 name="cartographer_node",
                 output="screen",
-                parameters=[
-                    {
-                        "cartographer_config_dir": cartographer_config_dir,
-                        "configuration_basename": configuration_basename,
-                    }
+                parameters=[{"use_sim_time": use_sim_time}],
+                arguments=[
+                    "-configuration_directory",
+                    cartographer_config_dir,
+                    "-configuration_basename",
+                    configuration_basename,
                 ],
             ),
             DeclareLaunchArgument(
@@ -98,14 +99,14 @@ def generate_launch_description():
                 }.items(),
             ),
             # RViz Node
-            Node(
-                package="rviz2",
-                executable="rviz2",
-                name="rviz2",
-                arguments=["-d", rviz_config_dir],
-                parameters=[{"use_sim_time": use_sim_time}],
-                condition=IfCondition(use_rviz),
-                output="screen",
-            ),
+            # Node(
+            #     package="rviz2",
+            #     executable="rviz2",
+            #     name="rviz2",
+            #     arguments=["-d", rviz_config_dir],
+            #     parameters=[{"use_sim_time": use_sim_time}],
+            #     condition=IfCondition(use_rviz),
+            #     output="screen",
+            # ),
         ]
     )

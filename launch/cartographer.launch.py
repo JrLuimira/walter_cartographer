@@ -100,13 +100,13 @@ def generate_launch_description():
             ),
             # RViz Node
             # Node(
-            #     package="rviz2",
-            #     executable="rviz2",
-            #     name="rviz2",
-            #     arguments=["-d", rviz_config_dir],
-            #     parameters=[{"use_sim_time": use_sim_time}],
-            #     condition=IfCondition(use_rviz),
-            #     output="screen",
-            # ),
+            #      package="rviz2",
+            #      executable="rviz2",
+            #      name="rviz2",
+            #      arguments=["-d", rviz_config_dir],
+            #      parameters=[{"use_sim_time": use_sim_time}],
+            #      condition=IfCondition(use_rviz),
+            #      output="screen",
+            #  ),
         ]
     )

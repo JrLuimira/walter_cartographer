@@ -47,23 +47,23 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        base:
+        base_footprint:
           Value: true
-        cabeza_pecho:
+        base_link:
           Value: true
-        fijos_inferior:
+        base_scan:
           Value: true
-        panza:
+        caster_back_link:
           Value: true
-        odom:
+        imu_link:
           Value: true
         map:
           Value: true
         odom:
           Value: true
-        rueda:
+        wheel_left_link:
           Value: true
-        rueda_2:
+        wheel_right_link:
           Value: true
       Marker Scale: 1
       Name: TF
@@ -73,14 +73,17 @@ Visualization Manager:
       Tree:
         map:
           odom:
-            base:
-              fijos_inferior:
-                panza:
-                  cabeza_pecho:
-                    {}
-                rueda:
+            base_footprint:
+              base_link:
+                base_scan:
                   {}
-                rueda_2:
+                caster_back_link:
+                  {}
+                imu_link:
+                  {}
+                wheel_left_link:
+                  {}
+                wheel_right_link:
                   {}
       Update Interval: 0
       Value: true
